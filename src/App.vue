@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+  <div id="app" class="small-container">
     <img id="image" src="./assets/logo.png" alt="VueJS" />
     <h1>Employee Details</h1>
-    <EmployeeDetails />
+    <employee-details v-bind:employees ="employees" />
   </div>
 </template>
 
@@ -13,24 +13,53 @@ import EmployeeDetails from './components/EmployeeDetails.vue'
 export default {
   name: 'app',
   components: {
-    EmployeeDetails
+    EmployeeDetails,
+  },
+  data() {
+    return {
+      employees: [
+        {
+          id: 1,
+          name: 'Dipendra Shekhawat',
+          email: 'ds@abc.com',
+        },
+        {
+          id: 2,
+          name: 'Akash Dhawale',
+          email: 'ad@abc.com',
+        },
+        {
+          id: 3,
+          name: 'Ashish Jaiswal',
+          email: 'aj@abc.com',
+        },
+      ],
+    }
+  },
+  
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+
+#employee-details {
+  width: 80%;
+}
+
+button {
+  background: #009435;
+  border: 1px solid #009435;
+}
+
+.small-container {
+  max-width: 680px;
+   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
   color: #2c3e50;
   margin-top: 10px;
   margin-left: 10px;
-}
-
-#employee-details {
-  width: 35%;
 }
 
 </style>

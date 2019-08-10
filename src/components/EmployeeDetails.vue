@@ -1,24 +1,11 @@
 <template>
   <div id="employee-details">
     <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-        </tr>
-      </thead>
+      <!-- ...thead... -->
       <tbody>
-        <tr>
-          <td>Dipendra Shekhawat</td>
-          <td>ds@abc.com</td>
-        </tr>
-        <tr>
-          <td>Akash Dhawale</td>
-          <td>ad@abc.com</td>
-        </tr>
-        <tr>
-          <td>Ashish Jaiswal</td>
-          <td>aj@abc.com</td>
+        <tr v-for="employee in employees" :key="employee.id">
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.email }}</td>
         </tr>
       </tbody>
     </table>
@@ -28,6 +15,9 @@
 <script>
   export default {
     name: 'employee-details',
+    props: {
+      employees: Array,
+    },
   }
 </script>
 
