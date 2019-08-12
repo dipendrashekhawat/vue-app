@@ -2,18 +2,22 @@
   <div id="app" class="small-container">
     <img id="image" src="./assets/logo.png" alt="VueJS" />
     <h1>Employee Details</h1>
+    <employee-form />
     <employee-details v-bind:employees ="employees" />
   </div>
 </template>
 
 <script>
 
+import EmployeeForm from './components/EmployeeForm.vue'
 import EmployeeDetails from './components/EmployeeDetails.vue'
+
 
 export default {
   name: 'app',
   components: {
     EmployeeDetails,
+    EmployeeForm,
   },
   data() {
     return {
