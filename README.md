@@ -48,7 +48,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ## Tooling
 I have used the following tools and plugins for this app.
 
- 1. Visual Studio Code
- 2. [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) Plugin
+ 1. [Visual Studio Code](https://code.visualstudio.com/)
+ 2. [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
  3. [Vue Dev tools - Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en)
  4. [Primitive UI](https://taniarascia.github.io/primitive/)
