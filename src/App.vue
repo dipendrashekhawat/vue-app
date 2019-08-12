@@ -2,7 +2,7 @@
   <div id="app" class="small-container">
     <img id="image" src="./assets/logo.png" alt="VueJS" />
     <h1>Employee Details</h1>
-    <employee-form />
+    <employee-form  @add:employee="addEmployee" />
     <employee-details v-bind:employees ="employees" />
   </div>
 </template>
@@ -21,23 +21,16 @@ export default {
   },
   data() {
     return {
-      employees: [
-        {
-          id: 1,
-          name: 'Dipendra Shekhawat',
-          email: 'ds@abc.com',
-        },
-        {
-          id: 2,
-          name: 'Akash Dhawale',
-          email: 'ad@abc.com',
-        },
-        {
-          id: 3,
-          name: 'Ashish Jaiswal',
-          email: 'aj@abc.com',
-        },
-      ],
+      employees: [],
+    }
+  },
+  methods: {
+    addEmployee(employee){
+    const lastId = this.employees.length > 0 ? this.employees[this.employees.length - 1].id : 0;
+    const id = lastId + 1;
+    const newEmployee = { ...employee, id };
+    
+    this.employees = [...this.employees, newEmployee]
     }
   },
   

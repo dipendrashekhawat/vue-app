@@ -1,6 +1,6 @@
 <template>
     <div id="employee-form">
-        <form>
+        <form @submit.prevent="handleSubmit">
             <label>Employee Name</label>
             <input v-model="employee.name" type="text" />
             <label>Employee Email</label>
@@ -20,6 +20,11 @@ export default {
                 email: '',
             },
         }
+    },
+    methods: {
+        handleSubmit() {
+            this.$emit('add:employee', this.employee)
+        },
     },
 }
 </script>
