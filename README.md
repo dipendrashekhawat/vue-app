@@ -1,5 +1,7 @@
 # vue-app
-This is a small application created using VueJS. The idea is to get hands on with Vue framework. 
+This is a small application created using VueJS. The idea is to get hands on with Vue framework.
+
+![EmployeeDetails](../master/screenshots/EmployeeDetails.png)
 
 ## Project setup
 ```
@@ -52,3 +54,5 @@ I have used the following tools and plugins for this app.
  2. [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
  3. [Vue Dev tools - Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en)
  4. [Primitive UI](https://taniarascia.github.io/primitive/)
+ 
+ ![EmployeeForm](../master/screenshots/EmployeeForm.png)
