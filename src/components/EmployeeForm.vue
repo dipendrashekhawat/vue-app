@@ -5,7 +5,7 @@
             <input 
                 ref="first"
                 type="text"
-                :class="{ 'has-error': submitting && invalidName }"
+                :class="{ 'has-error': submitting && isNameValid }"
                 v-model="employee.name"
                 @focus="clearStatus"
                 @keypress="clearStatus" 
@@ -13,12 +13,12 @@
             <label>Employee Email</label>
             <input 
                 type="text"
-                :class="{ 'has-error': submitting && invalidEmail }"
+                :class="{ 'has-error': submitting && isEmailValid }"
                 v-model="employee.email"
                 @focus="clearStatus"
             />
             <p v-if="error && submitting" class="error-message">
-                ❗Please fill out all required fields
+                ❗Please fill out all required fields and valid email address
             </p>
             <p v-if="success" class="success-message">
                 ✅ Employee successfully added
@@ -39,6 +39,7 @@ export default {
             employee: {
                 name: '',
                 email: '',
+                reg: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
             },
         }
     },
@@ -47,7 +48,7 @@ export default {
             this.submitting = true
             this.clearStatus()
 
-            if(this.invalidName || this.invalidEmail){
+            if(this.isNameValid || this.isEmailValid){
                 this.error = true
                 return
             }
@@ -57,6 +58,7 @@ export default {
             this.employee = {
                 name: '',
                 email: '',
+                reg: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
             }
             this.error = false
             this.success = true
@@ -69,12 +71,12 @@ export default {
         },
     },
     computed: {
-        invalidName() {
-            return this.employee.name === ''
+        isNameValid() {
+            return this.employee.name === '';
         },
-        invalidEmail() {
-            return this.employee.email === ''
-        },
+        isEmailValid () {
+            return (this.employee.email === '') ? true : (this.employee.reg.test(this.employee.email)) ? false : true;
+        }
     },
 }
 </script>
