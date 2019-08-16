@@ -1,14 +1,13 @@
 # vue-app
 This is a small application created using [VueJS](https://vuejs.org/). The idea is to get hands on with Vue framework and learn along the way.
 
-The application is built iterating through below given steps: 
+This application is built iterating through below given steps: 
 <ol>
  <li>Setting up Vue</li>
  <li>Display employee records</li>
  <li>CRUD operations</li>
  <li>Adding validations</li>
  <li>Making API calls</li>
- <li>Hosting</li>
 </ol>
 
 ![EmployeeDetails](../master/screenshots/EmployeeDetails.png)
