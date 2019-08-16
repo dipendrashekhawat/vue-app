@@ -25,14 +25,27 @@ export default {
     }
   },
   methods: {
-    addEmployee(employee){
-    const lastId = this.employees.length > 0 ? this.employees[this.employees.length - 1].id : 0;
-    const id = lastId + 1;
-    const newEmployee = { ...employee, id };
+    addEmployee(employee) {
+      const lastId = this.employees.length > 0 ? this.employees[this.employees.length - 1].id : 0;
+      const id = lastId + 1;
+      const newEmployee = { ...employee, id };
     
-    this.employees = [...this.employees, newEmployee]
+      this.employees = [...this.employees, newEmployee]
+    },
+
+    async getEmployees() {
+      try {
+        const reponse = await fetch('https://jsonplaceholder.typicode.com/users')
+        const data = await reponse.json()
+        this.employees = data
+      } catch (error) {
+        console.error('Error occured while retrieving employees: ' +error);
+      }
     }
   },
+  mounted() {
+    this.getEmployees()
+  }
   
   }
 </script>
