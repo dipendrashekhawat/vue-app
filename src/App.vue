@@ -3,7 +3,11 @@
     <img id="image" src="./assets/logo.png" alt="VueJS" />
     <h1>Employee Details</h1>
     <employee-form  @add:employee="addEmployee" />
-    <employee-details v-bind:employees ="employees" />
+
+    <employee-details v-bind:employees ="employees"
+                      @edit:employee="editEmployee"
+                      @delete:employee="deleteEmployee"
+    />
   </div>
 </template>
 
@@ -35,17 +39,33 @@ export default {
         const data = await response.json()
         this.employees = [...this.employees, data]
       } catch (error) {
-        console.error('Error occured while adding employee: ' +error);
+        console.error('Error occured while adding employee: ' +error)
       }
     },
 
     async getEmployees() {
       try {
-        const reponse = await fetch('https://jsonplaceholder.typicode.com/users')
-        const data = await reponse.json()
+        const response = await fetch('https://jsonplaceholder.typicode.com/users')
+        const data = await response.json()
         this.employees = data
       } catch (error) {
         console.error('Error occured while retrieving employees: ' +error);
+      }
+    },
+
+    async editEmployees(id, updatedEmployee) {
+      try {
+        const response = await fetch ('https://jsonplaceholder.typicode.com/users/${id}', {
+          method: 'PUT',
+          body: JSON.stringify(updatedEmployee),
+          headers: { "Content-type": "application/json; charset=UTF-8" } 
+        })
+
+        const data = await response.json()
+        this.employees = this.employees.map(employee => (employee.id === id ? data : employee))
+
+      } catch (error) {
+        console.error('Error while editing: ', +error)
       }
     }
   },
