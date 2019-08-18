@@ -73,18 +73,18 @@ export default {
     this.getEmployees()
   }
   
-  }
+}
 </script>
 
 <style>
 
 #employee-details {
-  width: 80%;
+  width: 100%;
 }
 
 button {
-  background: #009435;
-  border: 1px solid #009435;
+  background: #41b883;
+  border: 1px solid #41b883;
 }
 
 .small-container {
