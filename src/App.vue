@@ -35,7 +35,7 @@ export default {
           method: 'POST',
           body: JSON.stringify(employee),
           headers: { "Content-type": "application/json; charset=UTF-8" }
-        })
+        });
         const data = await response.json()
         this.employees = [...this.employees, data]
       } catch (error) {
@@ -45,7 +45,7 @@ export default {
 
     async getEmployees() {
       try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/users')
+        const response = await fetch(`https://jsonplaceholder.typicode.com/users`)
         const data = await response.json()
         this.employees = data
       } catch (error) {
@@ -53,13 +53,13 @@ export default {
       }
     },
 
-    async editEmployees(id, updatedEmployee) {
+    async editEmployee(id, updatedEmployee) {
       try {
-        const response = await fetch ('https://jsonplaceholder.typicode.com/users/${id}', {
+        const response = await fetch (`https://jsonplaceholder.typicode.com/users/${id}`, {
           method: 'PUT',
           body: JSON.stringify(updatedEmployee),
           headers: { "Content-type": "application/json; charset=UTF-8" } 
-        })
+        });
 
         const data = await response.json()
         this.employees = this.employees.map(employee => (employee.id === id ? data : employee))
@@ -67,7 +67,18 @@ export default {
       } catch (error) {
         console.error('Error while editing: ', +error)
       }
-    }
+    },
+
+    async deleteEmployee(id) {
+      try {
+        await fetch (`https://jsonplaceholder.typicode.com/users/${id}`, {
+          method: 'DELETE'
+        });
+        this.employees = this.employees.filter(employee => employee.id !== id);
+      } catch (error) {
+        console.error('Error while deleting: ', +error)
+      }
+    },
   },
   mounted() {
     this.getEmployees()
@@ -87,8 +98,13 @@ button {
   border: 1px solid #41b883;
 }
 
+.delete-button {
+  background:#d11a2a;
+  border: 1px solid #d11a2a;
+}
+
 .small-container {
-  max-width: 680px;
+  max-width: 720px;
    font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

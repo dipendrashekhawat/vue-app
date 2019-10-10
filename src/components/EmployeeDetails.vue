@@ -25,12 +25,12 @@
 
           <td v-if="editing === employee.id">
             <button @click="editEmployee(employee)">Save</button>
-            <button class="muted-button" @click="cancelEdit(employee)">Cancel</button>
+            <button @click="cancelEdit(employee)" class="muted-button">Cancel</button>
           </td>
 
           <td v-else>
             <button @click="editMode(employee)">Edit</button>
-            <button @click="$emit('delete:employee', employee.id)">Delete</button>
+            <button @click="$emit('delete:employee', employee.id)" class="delete-button">Delete</button>
           </td>
 
         </tr>
@@ -67,7 +67,8 @@
         if(employee.name === '' || employee.email === '') return
         this.$emit('edit:employee', employee.id, employee)
         this.editing = null        
-      }
+      },
+
     }
   }
 </script>
