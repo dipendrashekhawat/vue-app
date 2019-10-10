@@ -1,4 +1,4 @@
-# vue-app
+# vue-app | [view demo](https://dipendrashekhawat.github.io/vue-app/)
 This is a small application created using [VueJS](https://vuejs.org/). The idea is to get hands on with Vue framework and learn along the way.
 
 This application is built iterating through below given steps: 
